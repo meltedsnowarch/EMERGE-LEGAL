@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 
 const services = [
   {
@@ -42,21 +41,17 @@ function ServiceCard({
   service,
   isOpen,
   onToggle,
-  index,
+  delayClass,
 }: {
   service: (typeof services)[0];
   isOpen: boolean;
   onToggle: () => void;
-  index: number;
+  delayClass: string;
 }) {
   return (
-    <motion.div
+    <div
       data-design-id={`service-card-${service.id}`}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="border border-stone-200 bg-white"
+      className={`border border-stone-200 bg-white ${delayClass}`}
     >
       <button
         data-design-id={`service-card-${service.id}-toggle`}
@@ -79,9 +74,10 @@ function ServiceCard({
         </div>
         <span
           data-design-id={`service-card-${service.id}-icon`}
-          className="mt-1 flex-shrink-0 w-8 h-8 flex items-center justify-center border border-stone-200 text-stone-400 group-hover:border-stone-400 group-hover:text-stone-600 transition-colors"
+          className="card-icon mt-1 flex-shrink-0 w-8 h-8 flex items-center justify-center border border-stone-200 text-stone-400 group-hover:border-stone-400 group-hover:text-stone-600 transition-colors"
+          data-open={isOpen}
         >
-          <motion.svg
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
@@ -91,61 +87,51 @@ function ServiceCard({
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
-            animate={{ rotate: isOpen ? 45 : 0 }}
-            transition={{ duration: 0.2 }}
           >
             <line x1="12" y1="5" x2="12" y2="19" />
             <line x1="5" y1="12" x2="19" y2="12" />
-          </motion.svg>
+          </svg>
         </span>
       </button>
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            data-design-id={`service-card-${service.id}-content`}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="px-6 pb-6 sm:px-8 sm:pb-8 border-t border-stone-100">
-              <p
-                data-design-id={`service-card-${service.id}-description`}
-                className="mt-6 text-sm text-stone-600 leading-relaxed max-w-2xl"
+      <div
+        data-design-id={`service-card-${service.id}-body`}
+        className="card-body"
+        data-open={isOpen}
+      >
+        <div className="card-body-inner">
+          <div className="px-6 pb-6 sm:px-8 sm:pb-8 border-t border-stone-100">
+            <p
+              data-design-id={`service-card-${service.id}-description`}
+              className="mt-6 text-sm text-stone-600 leading-relaxed max-w-2xl"
+            >
+              {service.description}
+            </p>
+            <div
+              data-design-id={`service-card-${service.id}-pricing`}
+              className="mt-6 pt-5 border-t border-stone-100"
+            >
+              <span
+                data-design-id={`service-card-${service.id}-pricing-label`}
+                className="text-xs font-semibold uppercase tracking-widest text-stone-400"
               >
-                {service.description}
-              </p>
-              <div
-                data-design-id={`service-card-${service.id}-pricing`}
-                className="mt-6 pt-5 border-t border-stone-100"
+                Pricing
+              </span>
+              <ul
+                data-design-id={`service-card-${service.id}-pricing-list`}
+                className="mt-3 space-y-1"
               >
-                <span
-                  data-design-id={`service-card-${service.id}-pricing-label`}
-                  className="text-xs font-semibold uppercase tracking-widest text-stone-400"
-                >
-                  Pricing
-                </span>
-                <ul
-                  data-design-id={`service-card-${service.id}-pricing-list`}
-                  className="mt-3 space-y-1"
-                >
-                  {service.pricing.map((line, i) => (
-                    <li
-                      key={i}
-                      className="text-sm text-stone-700"
-                    >
-                      {line}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                {service.pricing.map((line, i) => (
+                  <li key={i} className="text-sm text-stone-700">
+                    {line}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -155,6 +141,12 @@ export default function Home() {
   const toggleCard = (id: string) => {
     setOpenCard((prev) => (prev === id ? null : id));
   };
+
+  const delayClasses = [
+    "animate-fade-up-delay-1",
+    "animate-fade-up-delay-2",
+    "animate-fade-up-delay-3",
+  ];
 
   return (
     <>
@@ -204,15 +196,11 @@ export default function Home() {
             data-design-id="hero-container"
             className="max-w-5xl mx-auto"
           >
-            <motion.div
-              data-design-id="hero-content"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-            >
+            <div data-design-id="hero-content" className="animate-fade-up">
               <div
                 data-design-id="hero-accent-line"
-                className="w-12 h-px bg-[#c9b99a] mb-8"
+                className="w-12 h-px mb-8"
+                style={{ background: "#c9b99a" }}
               />
               <h1
                 data-design-id="hero-title"
@@ -243,7 +231,7 @@ export default function Home() {
                   Get in touch
                 </a>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -251,22 +239,18 @@ export default function Home() {
         <section
           data-design-id="services"
           id="services"
-          className="py-20 sm:py-28 px-6 bg-stone-50/50"
+          className="py-20 sm:py-28 px-6"
+          style={{ background: "#fafaf9" }}
         >
           <div
             data-design-id="services-container"
             className="max-w-5xl mx-auto"
           >
-            <motion.div
-              data-design-id="services-header"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
+            <div data-design-id="services-header" className="animate-fade-up">
               <span
                 data-design-id="services-label"
-                className="text-xs font-semibold uppercase tracking-widest text-[#c9b99a]"
+                className="text-xs font-semibold uppercase tracking-widest"
+                style={{ color: "#c9b99a" }}
               >
                 Services
               </span>
@@ -283,7 +267,7 @@ export default function Home() {
                 Professional architectural compliance services for property
                 transactions throughout Ireland.
               </p>
-            </motion.div>
+            </div>
 
             <div
               data-design-id="services-list"
@@ -295,7 +279,7 @@ export default function Home() {
                   service={service}
                   isOpen={openCard === service.id}
                   onToggle={() => toggleCard(service.id)}
-                  index={index}
+                  delayClass={delayClasses[index]}
                 />
               ))}
             </div>
@@ -312,16 +296,11 @@ export default function Home() {
             data-design-id="contact-container"
             className="max-w-5xl mx-auto"
           >
-            <motion.div
-              data-design-id="contact-header"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
+            <div data-design-id="contact-header" className="animate-fade-up">
               <span
                 data-design-id="contact-label"
-                className="text-xs font-semibold uppercase tracking-widest text-[#c9b99a]"
+                className="text-xs font-semibold uppercase tracking-widest"
+                style={{ color: "#c9b99a" }}
               >
                 Contact
               </span>
@@ -331,20 +310,14 @@ export default function Home() {
               >
                 Get in touch
               </h2>
-            </motion.div>
+            </div>
 
             <div
               data-design-id="contact-grid"
-              className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-16"
+              className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-16 animate-fade-up-delay-1"
             >
               {/* LEFT — Bio & Details */}
-              <motion.div
-                data-design-id="contact-info"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
+              <div data-design-id="contact-info">
                 <div
                   data-design-id="contact-photo-row"
                   className="flex items-start gap-5"
@@ -393,7 +366,10 @@ export default function Home() {
                   className="mt-8 space-y-3"
                 >
                   <div data-design-id="contact-tel-row" className="flex items-center gap-3">
-                    <span data-design-id="contact-tel-label" className="text-xs font-semibold uppercase tracking-widest text-stone-400 w-12">
+                    <span
+                      data-design-id="contact-tel-label"
+                      className="text-xs font-semibold uppercase tracking-widest text-stone-400 w-12"
+                    >
                       Tel
                     </span>
                     <a
@@ -405,7 +381,10 @@ export default function Home() {
                     </a>
                   </div>
                   <div data-design-id="contact-email-row" className="flex items-center gap-3">
-                    <span data-design-id="contact-email-label" className="text-xs font-semibold uppercase tracking-widest text-stone-400 w-12">
+                    <span
+                      data-design-id="contact-email-label"
+                      className="text-xs font-semibold uppercase tracking-widest text-stone-400 w-12"
+                    >
                       Email
                     </span>
                     <a
@@ -418,10 +397,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div
-                  data-design-id="contact-badge-wrapper"
-                  className="mt-8"
-                >
+                <div data-design-id="contact-badge-wrapper" className="mt-8">
                   <Image
                     data-design-id="contact-riai-badge"
                     src="/riai-badge.jpg"
@@ -431,16 +407,10 @@ export default function Home() {
                     className="object-contain"
                   />
                 </div>
-              </motion.div>
+              </div>
 
               {/* RIGHT — Enquiry Form */}
-              <motion.div
-                data-design-id="contact-form-wrapper"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              >
+              <div data-design-id="contact-form-wrapper">
                 <form
                   data-design-id="contact-form"
                   className="space-y-5"
@@ -467,7 +437,8 @@ export default function Home() {
                       id="name"
                       name="name"
                       required
-                      className="w-full px-4 py-3 text-sm text-stone-800 bg-stone-50 border border-stone-200 focus:border-stone-400 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 text-sm text-stone-800 border border-stone-200 focus:border-stone-400 focus:outline-none transition-colors"
+                      style={{ background: "#fafaf9" }}
                     />
                   </div>
                   <div data-design-id="contact-form-email-group">
@@ -484,7 +455,8 @@ export default function Home() {
                       id="email"
                       name="email"
                       required
-                      className="w-full px-4 py-3 text-sm text-stone-800 bg-stone-50 border border-stone-200 focus:border-stone-400 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 text-sm text-stone-800 border border-stone-200 focus:border-stone-400 focus:outline-none transition-colors"
+                      style={{ background: "#fafaf9" }}
                     />
                   </div>
                   <div data-design-id="contact-form-message-group">
@@ -501,7 +473,8 @@ export default function Home() {
                       name="message"
                       rows={5}
                       required
-                      className="w-full px-4 py-3 text-sm text-stone-800 bg-stone-50 border border-stone-200 focus:border-stone-400 focus:outline-none transition-colors resize-none"
+                      className="w-full px-4 py-3 text-sm text-stone-800 border border-stone-200 focus:border-stone-400 focus:outline-none transition-colors resize-none"
+                      style={{ background: "#fafaf9" }}
                     />
                   </div>
                   <button
@@ -512,7 +485,7 @@ export default function Home() {
                     Send
                   </button>
                 </form>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
