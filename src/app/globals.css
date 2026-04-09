@@ -49,26 +49,4 @@ body {
   animation: fadeUp 0.6s 0.3s ease-out both;
 }
 
-/* expandable card body */
-.card-body {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s ease;
-}
-
-.card-body[data-open="true"] {
-  grid-template-rows: 1fr;
-}
-
-.card-body-inner {
-  overflow: hidden;
-}
-
-/* plus → × rotation */
-.card-icon {
-  transition: transform 0.25s ease;
-}
-
-.card-icon[data-open="true"] {
-  transform: rotate(45deg);
-}
+/* card expand/collapse and icon rotation now handled via inline styles */

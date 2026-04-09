@@ -2,6 +2,82 @@
 
 import { useState } from "react";
 
+function ExpandableCard({
+  id,
+  title,
+  bgColor,
+  description,
+  pricing,
+  isOpen,
+  onToggle,
+  animDelay,
+}: {
+  id: string;
+  title: string;
+  bgColor: string;
+  description: string;
+  pricing: { label: string; items: string[] };
+  isOpen: boolean;
+  onToggle: () => void;
+  animDelay: string;
+}) {
+  return (
+    <div
+      data-design-id={`service-card-${id}`}
+      className={`border border-stone-200 flex flex-col ${animDelay}`}
+      style={{ background: bgColor }}
+    >
+      <button
+        data-design-id={`service-card-${id}-toggle`}
+        onClick={onToggle}
+        className="w-full text-left px-6 py-6 flex items-center justify-between gap-4 group cursor-pointer"
+      >
+        <h3
+          data-design-id={`service-card-${id}-title`}
+          className="text-sm sm:text-base font-semibold text-stone-900 tracking-tight whitespace-nowrap"
+        >
+          {title}
+        </h3>
+        <span
+          data-design-id={`service-card-${id}-icon`}
+          className="flex-shrink-0 w-8 h-8 flex items-center justify-center border border-stone-200 text-stone-400 group-hover:border-stone-400 group-hover:text-stone-600 transition-all duration-300"
+          style={{ transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
+        </span>
+      </button>
+
+      <div
+        data-design-id={`service-card-${id}-body`}
+        style={{
+          display: "grid",
+          gridTemplateRows: isOpen ? "1fr" : "0fr",
+          transition: "grid-template-rows 0.35s ease",
+        }}
+      >
+        <div style={{ overflow: "hidden" }}>
+          <div data-design-id={`service-card-${id}-expanded`} className="px-6 pb-6 border-t border-stone-200/60">
+            <p data-design-id={`service-card-${id}-description`} className="mt-6 text-sm text-stone-600 leading-relaxed">
+              {description}
+            </p>
+            <div data-design-id={`service-card-${id}-pricing`} className="mt-6 pt-5 border-t border-stone-200/60">
+              <span data-design-id={`service-card-${id}-pricing-label`} className="text-xs font-semibold uppercase tracking-widest text-stone-400">{pricing.label}</span>
+              <ul data-design-id={`service-card-${id}-pricing-list`} className="mt-3 space-y-1">
+                {pricing.items.map((item, i) => (
+                  <li key={i} data-design-id={`service-card-${id}-price-${i + 1}`} className="text-sm text-stone-700">{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const [openCard, setOpenCard] = useState<string | null>(null);
 
@@ -42,161 +118,45 @@ export default function Home() {
       <section
         data-design-id="services"
         id="services"
-        className="py-12 sm:py-16 px-6"
-        style={{ background: "#F4EFE4" }}
+        className="py-12 sm:py-16 px-6 bg-white"
       >
         <div data-design-id="services-container" className="max-w-5xl mx-auto">
           <div
             data-design-id="services-list"
             className="grid grid-cols-1 md:grid-cols-3 gap-4"
           >
-            {/* CARD 1 — Land Registry Compliant Maps */}
-            <div
-              data-design-id="service-card-land-registry"
-              className="border border-stone-200 bg-white flex flex-col animate-fade-up-delay-1"
-            >
-              <button
-                data-design-id="service-card-land-registry-toggle"
-                onClick={() => toggle("land-registry")}
-                className="w-full text-left px-6 py-6 flex items-center justify-between gap-4 group cursor-pointer"
-              >
-                <h3
-                  data-design-id="service-card-land-registry-title"
-                  className="text-sm sm:text-base font-semibold text-stone-900 tracking-tight whitespace-nowrap"
-                >
-                  Land Registry Compliant Maps
-                </h3>
-                <span
-                  data-design-id="service-card-land-registry-icon"
-                  className="card-icon flex-shrink-0 w-8 h-8 flex items-center justify-center border border-stone-200 text-stone-400 group-hover:border-stone-400 group-hover:text-stone-600 transition-colors"
-                  data-open={openCard === "land-registry"}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                  </svg>
-                </span>
-              </button>
-              <div
-                data-design-id="service-card-land-registry-body"
-                className="card-body"
-                data-open={openCard === "land-registry"}
-              >
-                <div className="card-body-inner">
-                  <div data-design-id="service-card-land-registry-expanded" className="px-6 pb-6 border-t border-stone-100">
-                    <p data-design-id="service-card-land-registry-description" className="mt-6 text-sm text-stone-600 leading-relaxed">
-                      A Land Registry Compliant Map is a detailed large-scale map meeting the requirements of the Property Registration Authority of Ireland (PRAI). Required by solicitors as part of conveyancing when registering, transferring or subdividing a property. An RIAI architect surveys the site, verifies boundaries and certifies the map to PRAI standards.
-                    </p>
-                    <div data-design-id="service-card-land-registry-pricing" className="mt-6 pt-5 border-t border-stone-100">
-                      <span data-design-id="service-card-land-registry-pricing-label" className="text-xs font-semibold uppercase tracking-widest text-stone-400">Pricing</span>
-                      <ul data-design-id="service-card-land-registry-pricing-list" className="mt-3 space-y-1">
-                        <li data-design-id="service-card-land-registry-price-1" className="text-sm text-stone-700">House — €300 + VAT</li>
-                        <li data-design-id="service-card-land-registry-price-2" className="text-sm text-stone-700">Apartment — €500 + VAT</li>
-                        <li data-design-id="service-card-land-registry-price-3" className="text-sm text-stone-700">Outside Dublin — contact for quote</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ExpandableCard
+              id="land-registry"
+              title="Land Registry Compliant Maps"
+              bgColor="#F4EFE4"
+              description="A Land Registry Compliant Map is a detailed large-scale map meeting the requirements of the Property Registration Authority of Ireland (PRAI). Required by solicitors as part of conveyancing when registering, transferring or subdividing a property. An RIAI architect surveys the site, verifies boundaries and certifies the map to PRAI standards."
+              pricing={{ label: "Pricing", items: ["House — €300 + VAT", "Apartment — €500 + VAT", "Outside Dublin — contact for quote"] }}
+              isOpen={openCard === "land-registry"}
+              onToggle={() => toggle("land-registry")}
+              animDelay="animate-fade-up-delay-1"
+            />
 
-            {/* CARD 2 — Opinion on Compliance */}
-            <div
-              data-design-id="service-card-opinion-compliance"
-              className="border border-stone-200 bg-white flex flex-col animate-fade-up-delay-2"
-            >
-              <button
-                data-design-id="service-card-opinion-compliance-toggle"
-                onClick={() => toggle("opinion-compliance")}
-                className="w-full text-left px-6 py-6 flex items-center justify-between gap-4 group cursor-pointer"
-              >
-                <h3
-                  data-design-id="service-card-opinion-compliance-title"
-                  className="text-sm sm:text-base font-semibold text-stone-900 tracking-tight whitespace-nowrap"
-                >
-                  Opinion on Compliance
-                </h3>
-                <span
-                  data-design-id="service-card-opinion-compliance-icon"
-                  className="card-icon flex-shrink-0 w-8 h-8 flex items-center justify-center border border-stone-200 text-stone-400 group-hover:border-stone-400 group-hover:text-stone-600 transition-colors"
-                  data-open={openCard === "opinion-compliance"}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                  </svg>
-                </span>
-              </button>
-              <div
-                data-design-id="service-card-opinion-compliance-body"
-                className="card-body"
-                data-open={openCard === "opinion-compliance"}
-              >
-                <div className="card-body-inner">
-                  <div data-design-id="service-card-opinion-compliance-expanded" className="px-6 pb-6 border-t border-stone-100">
-                    <p data-design-id="service-card-opinion-compliance-description" className="mt-6 text-sm text-stone-600 leading-relaxed">
-                      An RIAI Architect&apos;s Opinion on Compliance confirms that a property complies with planning permission and building regulations. Required retrospectively where no Certificate of Compliance exists — typically where works were carried out without professional oversight at the time. Issued in the format approved by the Law Society of Ireland. Covers both planning compliance and building regulations.
-                    </p>
-                    <div data-design-id="service-card-opinion-compliance-pricing" className="mt-6 pt-5 border-t border-stone-100">
-                      <span data-design-id="service-card-opinion-compliance-pricing-label" className="text-xs font-semibold uppercase tracking-widest text-stone-400">Pricing</span>
-                      <ul data-design-id="service-card-opinion-compliance-pricing-list" className="mt-3 space-y-1">
-                        <li data-design-id="service-card-opinion-compliance-price-1" className="text-sm text-stone-700">€400 + VAT</li>
-                        <li data-design-id="service-card-opinion-compliance-price-2" className="text-sm text-stone-700">Includes site visit and planning file review</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ExpandableCard
+              id="opinion-compliance"
+              title="Opinion on Compliance"
+              bgColor="#F7F3EB"
+              description="An RIAI Architect's Opinion on Compliance confirms that a property complies with planning permission and building regulations. Required retrospectively where no Certificate of Compliance exists — typically where works were carried out without professional oversight at the time. Issued in the format approved by the Law Society of Ireland. Covers both planning compliance and building regulations."
+              pricing={{ label: "Pricing", items: ["€400 + VAT", "Includes site visit and planning file review"] }}
+              isOpen={openCard === "opinion-compliance"}
+              onToggle={() => toggle("opinion-compliance")}
+              animDelay="animate-fade-up-delay-2"
+            />
 
-            {/* CARD 3 — Declaration of Identity */}
-            <div
-              data-design-id="service-card-declaration-identity"
-              className="border border-stone-200 bg-white flex flex-col animate-fade-up-delay-3"
-            >
-              <button
-                data-design-id="service-card-declaration-identity-toggle"
-                onClick={() => toggle("declaration-identity")}
-                className="w-full text-left px-6 py-6 flex items-center justify-between gap-4 group cursor-pointer"
-              >
-                <h3
-                  data-design-id="service-card-declaration-identity-title"
-                  className="text-sm sm:text-base font-semibold text-stone-900 tracking-tight whitespace-nowrap"
-                >
-                  Declaration of Identity
-                </h3>
-                <span
-                  data-design-id="service-card-declaration-identity-icon"
-                  className="card-icon flex-shrink-0 w-8 h-8 flex items-center justify-center border border-stone-200 text-stone-400 group-hover:border-stone-400 group-hover:text-stone-600 transition-colors"
-                  data-open={openCard === "declaration-identity"}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                  </svg>
-                </span>
-              </button>
-              <div
-                data-design-id="service-card-declaration-identity-body"
-                className="card-body"
-                data-open={openCard === "declaration-identity"}
-              >
-                <div className="card-body-inner">
-                  <div data-design-id="service-card-declaration-identity-expanded" className="px-6 pb-6 border-t border-stone-100">
-                    <p data-design-id="service-card-declaration-identity-description" className="mt-6 text-sm text-stone-600 leading-relaxed">
-                      A Declaration of Identity is required where the sale of a property involves discrepancies between deed maps, folio maps and historical mapping records. An RIAI architect visits the property, analyses all mapping evidence and prepares a Declaration resolving boundary and identity issues for vendor and purchaser.
-                    </p>
-                    <div data-design-id="service-card-declaration-identity-pricing" className="mt-6 pt-5 border-t border-stone-100">
-                      <span data-design-id="service-card-declaration-identity-pricing-label" className="text-xs font-semibold uppercase tracking-widest text-stone-400">Pricing</span>
-                      <ul data-design-id="service-card-declaration-identity-pricing-list" className="mt-3 space-y-1">
-                        <li data-design-id="service-card-declaration-identity-price-1" className="text-sm text-stone-700">Contact for quote</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+            <ExpandableCard
+              id="declaration-identity"
+              title="Declaration of Identity"
+              bgColor="#FAF8F3"
+              description="A Declaration of Identity is required where the sale of a property involves discrepancies between deed maps, folio maps and historical mapping records. An RIAI architect visits the property, analyses all mapping evidence and prepares a Declaration resolving boundary and identity issues for vendor and purchaser."
+              pricing={{ label: "Pricing", items: ["Contact for quote"] }}
+              isOpen={openCard === "declaration-identity"}
+              onToggle={() => toggle("declaration-identity")}
+              animDelay="animate-fade-up-delay-3"
+            />
           </div>
         </div>
       </section>

@@ -69,10 +69,10 @@ export default function ContactPage() {
               data-design-id="contact-bio"
               className="mt-6 text-sm text-stone-600 leading-relaxed"
             >
-              James Lawler MRIAI is a Dublin-based registered architect with
-              30 years experience. MeltedSnow Architects provides compliance
-              documentation services to solicitors and estate agents
-              throughout Ireland.
+              James Lawler MRIAI is a Dublin-based registered architect with 30
+              years experience who can provide property sale compliance
+              documentation services to solicitors and estate agents throughout
+              Ireland.
             </p>
 
             <div
