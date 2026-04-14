@@ -42,10 +42,9 @@ export default function ContactPage() {
 
           {/* Bio */}
           <p className="text-sm text-stone-600 leading-relaxed mb-8">
-            James Lawler MRIAI is a Dublin-based RIAI registered architect with
-            over 30 years of professional experience, providing architectural
-            compliance documentation for solicitors and estate agents throughout
-            Ireland.
+            James Lawler is a Dublin-based architect with over 30 years of
+            professional experience, providing architectural compliance
+            documentation for solicitors and estate agents throughout Ireland.
           </p>
 
           {/* Contact details */}
