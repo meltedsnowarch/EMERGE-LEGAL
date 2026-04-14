@@ -32,7 +32,7 @@ export default function ContactPage() {
           <div className="pt-1">
             <h1 className="text-base font-bold mb-3 tracking-tight"
               style={{ color: "#1A1A1A" }}>
-              James Lawler &middot; RIAI Registered Member &middot; 2026 &middot;{" "}
+              James Lawler &middot; MRIAI &middot;{" "}
               <a
                 href="https://www.meltedsnow.net"
                 target="_blank"
