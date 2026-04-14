@@ -135,7 +135,7 @@ body {
 }
 
 .service-row:hover .service-row-price {
-  color: #2C2C2A;
+  color: #2E4A7A;
 }
 
 .service-row-title {
@@ -148,7 +148,7 @@ body {
 
 .service-row-price {
   font-size: 0.75rem;
-  color: #2C2C2A;
+  color: #2E4A7A;
   white-space: nowrap;
   flex-shrink: 0;
   margin-top: 0.125rem;

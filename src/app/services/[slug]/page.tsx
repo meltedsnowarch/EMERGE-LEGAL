@@ -77,13 +77,13 @@ export default async function ServicePage({
               <p className="text-sm text-stone-700 leading-relaxed">
                 Prepared by James Lawler, MRIAI, Dublin, Ireland
               </p>
-              <p className="text-sm font-semibold" style={{ color: "#2C2C2A" }}>
+              <p className="text-sm font-semibold" style={{ color: "#2E4A7A" }}>
                 {service.price}
               </p>
               <Link
                 href="/contact"
                 className="block text-center text-sm font-semibold uppercase tracking-widest py-3 px-4 transition-colors hover:opacity-80"
-                style={{ background: "#212120", color: "#F5F0EA", border: "1px solid #212120" }}
+                style={{ background: "#2E4A7A", color: "#FFFFFF", border: "1px solid #2E4A7A" }}
               >
                 Book Now
               </Link>

@@ -38,15 +38,15 @@ export default function RootLayout({
         {/* ── HEADER / NAV ─────────────────────────────────────────────── */}
         <header
           data-design-id="nav"
-          className="fixed top-0 left-0 right-0 z-50 border-b border-stone-700"
-          style={{ background: "#2C2C2A" }}
+          className="fixed top-0 left-0 right-0 z-50 border-b border-blue-900"
+          style={{ background: "#1B2A4A" }}
         >
           <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
             <Link
               data-design-id="nav-logo"
               href="/"
               className="text-base tracking-tight hover:opacity-80 transition-opacity"
-              style={{ color: "#F5F0EA" }}
+              style={{ color: "#FFFFFF" }}
             >
               <span className="font-bold">EMERGE</span>
               <span className="font-light"> Compliance</span>
@@ -59,21 +59,21 @@ export default function RootLayout({
               <Link
                 href="/#services"
                 className="text-sm transition-colors hidden sm:block hover:opacity-70"
-                style={{ color: "#F5F0EA" }}
+                style={{ color: "#FFFFFF" }}
               >
                 Services
               </Link>
               <Link
                 href="/#how-it-works"
                 className="text-sm transition-colors hidden sm:block hover:opacity-70"
-                style={{ color: "#F5F0EA" }}
+                style={{ color: "#FFFFFF" }}
               >
                 How it works
               </Link>
               <Link
                 href="/contact"
                 className="text-sm transition-colors hover:opacity-70"
-                style={{ color: "#F5F0EA" }}
+                style={{ color: "#FFFFFF" }}
               >
                 Contact
               </Link>
@@ -88,11 +88,11 @@ export default function RootLayout({
         {/* ── FOOTER ───────────────────────────────────────────────────── */}
         <footer
           data-design-id="footer"
-          className="border-t border-stone-700 px-6 py-6"
-          style={{ background: "#2C2C2A" }}
+          className="border-t border-blue-900 px-6 py-6"
+          style={{ background: "#1B2A4A" }}
         >
           <div className="max-w-5xl mx-auto">
-            <p className="text-xs" style={{ color: "#F5F0EA" }}>
+            <p className="text-xs" style={{ color: "#FFFFFF" }}>
               James Lawler &middot; RIAI Registered Member &middot; 2026
             </p>
           </div>

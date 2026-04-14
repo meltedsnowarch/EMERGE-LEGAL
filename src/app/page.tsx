@@ -16,9 +16,9 @@ const DELAY = [
 
 /* All column headers use the same card colour */
 const COLUMN_BG: Record<ServiceCategory, string> = {
-  "maps-declarations":   "#E8E0D5",
-  "compliance-opinions": "#E8E0D5",
-  planning:              "#E8E0D5",
+  "maps-declarations":   "#F0F2F4",
+  "compliance-opinions": "#F0F2F4",
+  planning:              "#F0F2F4",
 };
 
 const HOW_IT_WORKS = [
@@ -101,7 +101,7 @@ export default function HomePage() {
                     className="px-5 py-4 border-b border-stone-200"
                     style={{ background: COLUMN_BG[category] }}
                   >
-                    <p className="text-sm font-bold text-stone-800 tracking-tight">
+                    <p className="text-sm font-bold tracking-tight" style={{ color: "#1B2A4A" }}>
                       {CATEGORY_LABELS[category]}
                     </p>
                   </div>
@@ -135,12 +135,12 @@ export default function HomePage() {
       <section
         data-design-id="how-it-works"
         id="how-it-works"
-        className="border-b border-stone-700 px-6 py-16 sm:py-20"
-        style={{ background: "#2C2C2A" }}
+        className="border-b border-blue-900 px-6 py-16 sm:py-20"
+        style={{ background: "#1B2A4A" }}
       >
         <div className="max-w-5xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-widest mb-10 animate-fade-up"
-            style={{ color: "#6B6B68" }}>
+            style={{ color: "#7A92B5" }}>
             How it works
           </p>
 
@@ -148,15 +148,15 @@ export default function HomePage() {
             {HOW_IT_WORKS.map((item, i) => (
               <div key={item.step} className={DELAY[i]}>
                 <p className="text-4xl font-bold mb-5 tracking-tight leading-none"
-                  style={{ color: "#454542" }}>
+                  style={{ color: "#2A3D5C" }}>
                   {item.step}
                 </p>
                 <h3 className="text-sm font-semibold mb-2 leading-snug"
-                  style={{ color: "#F5F0EA" }}>
+                  style={{ color: "#FFFFFF" }}>
                   {item.title}
                 </h3>
                 <p className="text-sm leading-relaxed"
-                  style={{ color: "#9E9A95" }}>
+                  style={{ color: "#A8B8CF" }}>
                   {item.body}
                 </p>
               </div>
