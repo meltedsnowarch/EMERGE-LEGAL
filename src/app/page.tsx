@@ -177,15 +177,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
             <div className="md:col-start-3">
               <p className="text-xs text-stone-400">
-                James Lawler &middot; RIAI Registered Member &middot; 2026 &middot;{" "}
-                <a
-                  href="https://www.meltedsnow.net"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-stone-600 transition-colors underline underline-offset-2"
-                >
-                  Meltedsnow Architects
-                </a>
+                James Lawler &middot; RIAI Registered Member &middot; 2026
               </p>
             </div>
           </div>

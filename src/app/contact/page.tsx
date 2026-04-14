@@ -32,7 +32,16 @@ export default function ContactPage() {
           <div className="pt-1">
             <h1 className="text-base font-bold mb-3 tracking-tight"
               style={{ color: "#1A1A1A" }}>
-              James Lawler MRIAI, Dublin
+              James Lawler &middot; RIAI Registered Member &middot; 2026 &middot;{" "}
+              <a
+                href="https://www.meltedsnow.net"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:opacity-70 transition-opacity"
+                style={{ color: "#1A1A1A" }}
+              >
+                Meltedsnow Architects
+              </a>
             </h1>
             <p className="text-sm leading-relaxed" style={{ color: "#1A1A1A" }}>
               James is a Dublin-based architect with over 30 years experience in
