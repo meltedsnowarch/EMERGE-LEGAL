@@ -131,7 +131,7 @@ select.form-input {
   justify-content: space-between;
   gap: 1rem;
   padding: 0.875rem 0;
-  border-bottom: 1px solid #243a62;
+  border-bottom: 1px solid #f0ece6;
   text-decoration: none;
   transition: opacity 0.15s ease;
 }
@@ -141,24 +141,24 @@ select.form-input {
 }
 
 .service-row:hover .service-row-title {
-  color: #FFFFFF;
+  color: #1B2A4A;
 }
 
 .service-row:hover .service-row-price {
-  color: #FFFFFF;
+  color: #2E4A7A;
 }
 
 .service-row-title {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #D6E0EE;
+  color: #1A1A1A;
   line-height: 1.4;
   transition: color 0.15s ease;
 }
 
 .service-row-price {
   font-size: 0.75rem;
-  color: #A8B8CF;
+  color: #2E4A7A;
   white-space: nowrap;
   flex-shrink: 0;
   margin-top: 0.125rem;

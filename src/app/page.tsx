@@ -58,10 +58,12 @@ export default function HomePage() {
             {/* Text — spans 2 of 3 columns */}
             <div className="md:col-span-2 animate-fade-up">
               <h1 className="text-2xl sm:text-[1.8rem] md:text-[2.2rem] font-bold text-stone-900 tracking-tight leading-tight">
-                Architectural compliance documents for property transactions in Ireland.
+                Architectural compliance documents{" "}
+                <br />
+                for property transactions in Ireland.
               </h1>
               <p className="mt-4 text-sm text-stone-500 font-light leading-relaxed">
-                Land Registry maps, Opinions on Compliance, and Declarations of Identity for solicitors and estate agents — with a 48-hour turnaround on most services.
+                Land Registry maps, Opinions on Compliance, and Declarations of Identity for solicitors and estate agents with a 48-hour turnaround on most services.
               </p>
             </div>
 
@@ -95,20 +97,20 @@ export default function HomePage() {
                 <div
                   key={category}
                   className={`overflow-hidden ${DELAY[i]}`}
-                  style={{ background: "#1B2A4A", border: "1px solid #243a62" }}
+                  style={{ background: "#FFFFFF", border: "1px solid #e2ddd7" }}
                 >
                   {/* Colour band header */}
                   <div
                     className="px-5 py-4"
-                    style={{ borderBottom: "1px solid #243a62", background: "#1B2A4A" }}
+                    style={{ borderBottom: "1px solid #d0c8be", background: "#E8E0D5" }}
                   >
-                    <p className="text-sm font-bold tracking-tight" style={{ color: "#FFFFFF" }}>
+                    <p className="text-sm font-bold tracking-tight" style={{ color: "#1B2A4A" }}>
                       {CATEGORY_LABELS[category]}
                     </p>
                   </div>
 
                   {/* Service rows */}
-                  <ul className="px-5" style={{ background: "#1B2A4A" }}>
+                  <ul className="px-5" style={{ background: "#FFFFFF" }}>
                     {services.map((service) => (
                       <li key={service.slug}>
                         <Link
@@ -171,7 +173,7 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto">
           <div className="w-1/3 h-px" style={{ background: "#e7e0d0" }} />
         </div>
-        <p className="mt-6 text-xs text-center text-stone-400">
+        <p className="mt-6 text-xs text-stone-400">
           James Lawler &middot; RIAI Registered Member &middot; 2026
         </p>
       </section>
