@@ -1,56 +1,67 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
+
+const SERVICES = [
+  "Land Registry Map House/Site",
+  "Land Registry Map Apartment",
+  "Declaration of Identity",
+  "Opinion of Compliance with Planning",
+  "Opinion of Compliance with Building Regulations",
+  "Retention Planning Permission",
+];
+
+const EMPTY = {
+  service: "",
+  firstName: "",
+  lastName: "",
+  email: "",
+  mobile: "",
+  address1: "",
+  address2: "",
+  city: "",
+  eircode: "",
+  notes: "",
+};
 
 export default function ContactPage() {
+  const [fields, setFields] = useState(EMPTY);
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleChange(
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) {
+    setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSubmitted(true);
+  }
+
   return (
     <section className="px-6 py-16 sm:py-20">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-3xl mx-auto">
 
-        {/* ── Header ─────────────────────────────────────────────────── */}
-        <div className="mb-12 animate-fade-up">
-          <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 mb-4">
-            Contact
-          </p>
-          <div className="w-8 h-px mb-7" style={{ background: "#c9b99a" }} />
-          <h1 className="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
-            Contact
+        {/* ── Heading ────────────────────────────────────────────────── */}
+        <div className="mb-10 animate-fade-up">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4"
+            style={{ color: "#1A1A1A" }}>
+            Book a Service
           </h1>
+          <p className="text-sm leading-relaxed" style={{ color: "#1A1A1A" }}>
+            To book a service, contact James directly by phone, WhatsApp or
+            email with the property address and service required.
+          </p>
         </div>
 
-        {/* ── Bio & contact details ───────────────────────────────────── */}
-        <div className="max-w-lg animate-fade-up-delay-1">
+        {/* ── Contact details ─────────────────────────────────────────── */}
+        <div className="mb-12 animate-fade-up-delay-1">
+          <div className="space-y-3">
 
-          {/* Photo + name */}
-          <div className="flex items-start gap-4 mb-6">
-            <div className="w-16 h-16 flex-shrink-0 overflow-hidden">
-              <Image
-                src="/james-lawler.jpeg"
-                alt="James Lawler MRIAI"
-                width={64}
-                height={64}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="pt-1">
-              <h2 className="text-sm font-semibold text-stone-900">
-                James Lawler MRIAI
-              </h2>
-              <p className="mt-0.5 text-xs text-stone-500">
-                Registered Architect
-              </p>
-            </div>
-          </div>
-
-          {/* Bio */}
-          <p className="text-sm text-stone-600 leading-relaxed mb-8">
-            James Lawler is a Dublin-based architect with over 30 years of
-            professional experience, providing architectural compliance
-            documentation for solicitors and estate agents throughout Ireland.
-          </p>
-
-          {/* Contact details */}
-          <div className="space-y-4 mb-8">
-
-            {/* Tel + WhatsApp */}
+            {/* Phone + WhatsApp */}
             <div className="flex items-center gap-4">
               <span className="text-xs font-semibold uppercase tracking-widest text-stone-400 w-10 flex-shrink-0">
                 Tel
@@ -58,7 +69,8 @@ export default function ContactPage() {
               <div className="flex items-center gap-3 flex-wrap">
                 <a
                   href="tel:0834516091"
-                  className="text-sm text-stone-700 hover:text-stone-900 transition-colors"
+                  className="text-sm font-medium hover:opacity-70 transition-opacity"
+                  style={{ color: "#1A1A1A" }}
                 >
                   083 451 6091
                 </a>
@@ -80,24 +92,212 @@ export default function ContactPage() {
               </span>
               <a
                 href="mailto:emergearchservices@protonmail.com"
-                className="text-sm text-stone-700 hover:text-stone-900 transition-colors"
+                className="text-sm font-medium hover:opacity-70 transition-opacity"
+                style={{ color: "#1A1A1A" }}
               >
                 emergearchservices@protonmail.com
               </a>
             </div>
 
           </div>
-
-          {/* RIAI badge */}
-          <Image
-            src="/riai-badge.jpg"
-            alt="RIAI Practice Member 2026"
-            width={120}
-            height={60}
-            className="object-contain"
-          />
-
         </div>
+
+        {/* ── Booking form ─────────────────────────────────────────────── */}
+        <div className="animate-fade-up-delay-2">
+          {submitted ? (
+            <div
+              className="p-10 text-center"
+              style={{ background: "#E8E0D5" }}
+            >
+              <h2 className="text-lg font-semibold mb-2" style={{ color: "#1B2A4A" }}>
+                Enquiry received
+              </h2>
+              <p className="text-sm" style={{ color: "#1A1A1A" }}>
+                Thank you. James will be in touch shortly.
+              </p>
+            </div>
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="p-8 sm:p-10 space-y-5"
+              style={{ background: "#E8E0D5" }}
+            >
+
+              {/* Service dropdown */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-widest mb-2"
+                  style={{ color: "#1B2A4A" }}>
+                  What service do you require?
+                </label>
+                <select
+                  name="service"
+                  value={fields.service}
+                  onChange={handleChange}
+                  required
+                  className="form-input"
+                >
+                  <option value="" disabled>Select a service…</option>
+                  {SERVICES.map((s) => (
+                    <option key={s} value={s}>{s}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* First / Last name */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-widest mb-2"
+                    style={{ color: "#1B2A4A" }}>
+                    First Name
+                  </label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={fields.firstName}
+                    onChange={handleChange}
+                    required
+                    className="form-input"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-widest mb-2"
+                    style={{ color: "#1B2A4A" }}>
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={fields.lastName}
+                    onChange={handleChange}
+                    required
+                    className="form-input"
+                  />
+                </div>
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-widest mb-2"
+                  style={{ color: "#1B2A4A" }}>
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={fields.email}
+                  onChange={handleChange}
+                  required
+                  className="form-input"
+                />
+              </div>
+
+              {/* Mobile */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-widest mb-2"
+                  style={{ color: "#1B2A4A" }}>
+                  Mobile Number
+                </label>
+                <input
+                  type="tel"
+                  name="mobile"
+                  value={fields.mobile}
+                  onChange={handleChange}
+                  className="form-input"
+                />
+              </div>
+
+              {/* Address line 1 */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-widest mb-2"
+                  style={{ color: "#1B2A4A" }}>
+                  Property Address
+                </label>
+                <input
+                  type="text"
+                  name="address1"
+                  value={fields.address1}
+                  onChange={handleChange}
+                  required
+                  className="form-input"
+                />
+              </div>
+
+              {/* Address line 2 */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-widest mb-2"
+                  style={{ color: "#1B2A4A" }}>
+                  Property Address Line 2
+                </label>
+                <input
+                  type="text"
+                  name="address2"
+                  value={fields.address2}
+                  onChange={handleChange}
+                  className="form-input"
+                />
+              </div>
+
+              {/* Town/City + Eircode */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-widest mb-2"
+                    style={{ color: "#1B2A4A" }}>
+                    Town / City
+                  </label>
+                  <input
+                    type="text"
+                    name="city"
+                    value={fields.city}
+                    onChange={handleChange}
+                    required
+                    className="form-input"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-widest mb-2"
+                    style={{ color: "#1B2A4A" }}>
+                    Eircode
+                  </label>
+                  <input
+                    type="text"
+                    name="eircode"
+                    value={fields.eircode}
+                    onChange={handleChange}
+                    className="form-input"
+                  />
+                </div>
+              </div>
+
+              {/* Notes */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-widest mb-2"
+                  style={{ color: "#1B2A4A" }}>
+                  Any Other Information
+                </label>
+                <textarea
+                  name="notes"
+                  value={fields.notes}
+                  onChange={handleChange}
+                  rows={5}
+                  className="form-input resize-none"
+                />
+              </div>
+
+              {/* Submit */}
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  className="w-full sm:w-auto text-sm font-semibold uppercase tracking-widest py-3 px-10 transition-opacity hover:opacity-80"
+                  style={{ background: "#2C2C2A", color: "#FFFFFF" }}
+                >
+                  Submit
+                </button>
+              </div>
+
+            </form>
+          )}
+        </div>
+
       </div>
     </section>
   );

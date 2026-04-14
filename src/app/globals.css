@@ -81,16 +81,26 @@ body {
   width: 100%;
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
-  color: #1c1917;
+  color: #1A1A1A;
   background: #ffffff;
-  border: 1px solid #e7e5e4;
+  border: 1px solid #d6d0c8;
   outline: none;
   transition: border-color 0.18s ease;
   font-family: inherit;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .form-input:focus {
-  border-color: #a8a29e;
+  border-color: #1B2A4A;
+}
+
+select.form-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231A1A1A' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
 }
 
 /* ── WhatsApp button ─────────────────────────────────────────────────── */
