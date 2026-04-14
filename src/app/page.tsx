@@ -63,7 +63,9 @@ export default function HomePage() {
                 for property transactions in Ireland.
               </h1>
               <p className="mt-4 text-sm text-stone-500 font-light leading-relaxed">
-                Land Registry maps, Opinions on Compliance, and Declarations of Identity for solicitors and estate agents with a 48-hour turnaround on most services.
+                Land Registry maps, Opinions on Compliance, and Declarations of Identity for solicitors and{" "}
+                <br />
+                estate agents — with a 48-hour turnaround on most services.
               </p>
             </div>
 
@@ -175,7 +177,15 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
             <div className="md:col-start-3">
               <p className="text-xs text-stone-400">
-                James Lawler &middot; RIAI Registered Member &middot; 2026
+                James Lawler &middot; RIAI Registered Member &middot; 2026 &middot;{" "}
+                <a
+                  href="https://www.meltedsnow.net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-stone-600 transition-colors underline underline-offset-2"
+                >
+                  Meltedsnow Architects
+                </a>
               </p>
             </div>
           </div>

@@ -68,6 +68,20 @@ export default async function ServicePage({
             <p className="text-sm leading-[1.8]" style={{ color: "#1A1A1A" }}>
               {service.description}
             </p>
+            {service.slug === "retention-planning-permission" && (
+              <p className="mt-4 text-sm leading-[1.8]" style={{ color: "#1A1A1A" }}>
+                For full planning permission services please visit{" "}
+                <a
+                  href="https://www.meltedsnow.net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 hover:opacity-70 transition-opacity"
+                  style={{ color: "#2E4A7A" }}
+                >
+                  Meltedsnow Architects
+                </a>
+              </p>
+            )}
           </div>
 
           {/* Right — sidebar (1/3 width, flush with description) */}
@@ -85,7 +99,7 @@ export default async function ServicePage({
                 className="block text-center text-sm font-semibold uppercase tracking-widest py-3 px-4 transition-colors hover:opacity-80"
                 style={{ background: "#2E4A7A", color: "#FFFFFF", border: "1px solid #2E4A7A" }}
               >
-                Book Now
+                {service.slug === "retention-planning-permission" ? "Enquire" : "Book Now"}
               </Link>
             </div>
           </div>
