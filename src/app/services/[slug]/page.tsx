@@ -75,7 +75,7 @@ export default async function ServicePage({
             <div className="border border-stone-200 p-6 space-y-6"
               style={{ background: "#FAF8F3" }}>
               <p className="text-sm text-stone-700 leading-relaxed">
-                Prepared by James Lawler, MRIAI, Dublin, Ireland
+                Prepared by James Lawler, MRIAI
               </p>
               <p className="text-sm font-semibold" style={{ color: "#2E4A7A" }}>
                 {service.price}

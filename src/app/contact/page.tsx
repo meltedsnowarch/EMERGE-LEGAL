@@ -35,11 +35,11 @@ export default function ContactPage() {
               James Lawler MRIAI, Dublin
             </h1>
             <p className="text-sm leading-relaxed" style={{ color: "#1A1A1A" }}>
-              James Lawler is a Dublin-based registered architect with over 30
-              years experience in residential architecture. Through his practice
-              Meltedsnow Architects he has designed extensions, refurbishments
-              and new builds across Dublin and Ireland. EMERGE Compliance offers
-              a specialist certification service providing solicitors, estate
+              James is a Dublin-based architect with over 30 years experience in
+              residential architecture. Through his practice Meltedsnow
+              Architects he has designed extensions, refurbishments and new
+              builds across Dublin and Ireland. EMERGE Compliance offers a
+              specialist certification service providing solicitors, estate
               agents and homeowners with the compliance documents required for
               property transactions.
             </p>
@@ -48,7 +48,8 @@ export default function ContactPage() {
         </div>
 
         {/* ── Bridging line ───────────────────────────────────────────── */}
-        <p className="mb-6 text-xs text-stone-400 animate-fade-up-delay-1">
+        <p className="mb-6 text-base font-bold tracking-tight animate-fade-up-delay-1"
+          style={{ color: "#1A1A1A" }}>
           To book a service please contact James directly:
         </p>
 

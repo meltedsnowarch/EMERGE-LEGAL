@@ -33,7 +33,7 @@ export const SERVICES: Service[] = [
     turnaround: "",
     category: "maps-declarations",
     description:
-      "A Land Registry Compliant Map is required by solicitors for all property sales and first registrations with the Property Registration Authority of Ireland. It is a scale certified map showing the precise boundaries and area of the property. The map is prepared by a registered RIAI architect and is accepted by Tailte Éireann, all major banks, and the Law Society of Ireland.",
+      "A Land Registry Compliant Map is required by solicitors for all property sales and first registrations with the Property Registration Authority of Ireland. It is a scale certified map showing the precise boundaries and area of the property. The map is prepared by James and is accepted by Tailte Éireann, all major banks, and the Law Society of Ireland.",
   },
   {
     slug: "land-registry-map-apartment",
@@ -42,7 +42,7 @@ export const SERVICES: Service[] = [
     turnaround: "2–3 working days",
     category: "maps-declarations",
     description:
-      "Apartment properties require both a Land Registry Compliant Map and a certified floor plan showing the boundaries and area of the individual unit. James Lawler Architect will carry out a site survey where required and produce all necessary documentation to satisfy the Property Registration Authority of Ireland requirements.",
+      "Apartment properties require both a Land Registry Compliant Map and a certified floor plan showing the boundaries and area of the individual unit. James will carry out a site survey where required and produce all necessary documentation to satisfy the Property Registration Authority of Ireland requirements.",
   },
   {
     slug: "declaration-of-identity",
@@ -62,7 +62,7 @@ export const SERVICES: Service[] = [
     turnaround: "",
     category: "compliance-opinions",
     description:
-      "When selling or mortgaging a property, confirmation may be required that any works carried out comply with planning permission. The Opinion of Compliance with Planning is prepared by James Lawler Architect following a visual inspection of the property. It is issued in RIAI standard format and is accepted by all major banks and mortgage providers.",
+      "When selling or mortgaging a property, confirmation may be required that any works carried out comply with planning permission. The Opinion of Compliance with Planning is prepared by James following a visual inspection of the property. It is issued in RIAI standard format and is accepted by all major banks and mortgage providers.",
   },
   {
     slug: "opinion-compliance-building-regulations",
@@ -71,7 +71,7 @@ export const SERVICES: Service[] = [
     turnaround: "",
     category: "compliance-opinions",
     description:
-      "If works have been carried out on a property without full professional oversight at the time of construction, an Opinion of Compliance with Building Regulations may be required to complete a sale. James Lawler MRIAI will carry out a visual inspection and issue a formal opinion confirming the works appear to comply with the relevant building regulations in place at the time of construction. Occasionally the works do not comply and a report as to the reasons why will be issued in place of the standard RIAI document.",
+      "If works have been carried out on a property without full professional oversight at the time of construction, an Opinion of Compliance with Building Regulations may be required to complete a sale. James will carry out a visual inspection and issue a formal opinion confirming the works appear to comply with the relevant building regulations in place at the time of construction. Occasionally the works do not comply and a report as to the reasons why will be issued in place of the standard RIAI document.",
   },
 
   // ── Column 3 (right) — Planning ─────────────────────────────────────
@@ -82,7 +82,7 @@ export const SERVICES: Service[] = [
     turnaround: "",
     category: "planning",
     description:
-      "If works have been carried out on a property that required planning permission but none was obtained at the time, Retention Planning Permission offers an option to regularise the development through retrospective retention permission. James Lawler MRIAI will manage the full process from initial survey to preparation of the drawing information through to submission to the local authority, and can provide an Opinion of Compliance with Planning once permission is granted.",
+      "If works have been carried out on a property that required planning permission but none was obtained at the time, Retention Planning Permission offers an option to regularise the development through retrospective retention permission. James will manage the full process from initial survey to preparation of the drawing information through to submission to the local authority, and can provide an Opinion of Compliance with Planning once permission is granted.",
   },
 ];
 

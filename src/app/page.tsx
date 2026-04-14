@@ -172,10 +172,14 @@ export default function HomePage() {
       <section data-design-id="divider" className="px-6 pt-10 pb-12">
         <div className="max-w-5xl mx-auto">
           <div className="w-1/3 h-px" style={{ background: "#e7e0d0" }} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+            <div className="md:col-start-3">
+              <p className="text-xs text-stone-400">
+                James Lawler &middot; RIAI Registered Member &middot; 2026
+              </p>
+            </div>
+          </div>
         </div>
-        <p className="mt-6 text-xs text-stone-400">
-          James Lawler &middot; RIAI Registered Member &middot; 2026
-        </p>
       </section>
     </>
   );
