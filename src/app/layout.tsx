@@ -38,7 +38,8 @@ export default function RootLayout({
         {/* ── HEADER / NAV ─────────────────────────────────────────────── */}
         <header
           data-design-id="nav"
-          className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-100"
+          className="fixed top-0 left-0 right-0 z-50 border-b border-stone-200"
+          style={{ background: "#F7F3EB" }}
         >
           <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
             <Link
@@ -83,78 +84,13 @@ export default function RootLayout({
         {/* ── FOOTER ───────────────────────────────────────────────────── */}
         <footer
           data-design-id="footer"
-          className="border-t border-stone-100 bg-white py-10 px-6"
+          className="border-t border-stone-200 px-6 py-6"
+          style={{ background: "#FAF8F3" }}
         >
           <div className="max-w-5xl mx-auto">
-
-            {/* Main footer row */}
-            <div className="flex flex-col sm:flex-row justify-between gap-8 mb-10">
-
-              {/* Brand */}
-              <div>
-                <p className="text-sm tracking-tight text-stone-800 mb-1">
-                  <span className="font-bold">EMERGE</span>
-                  <span className="font-light"> Legal</span>
-                </p>
-                <p className="text-xs text-stone-400 leading-relaxed max-w-xs">
-                  Architectural compliance documents for property transactions in Ireland. RIAI registered architect.
-                </p>
-              </div>
-
-              {/* Link columns */}
-              <div className="flex gap-12 sm:gap-16">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 mb-3">
-                    Services
-                  </p>
-                  <ul className="space-y-2">
-                    <li>
-                      <Link href="/services/opinion-compliance-planning" className="text-xs text-stone-500 hover:text-stone-900 transition-colors">
-                        Compliance Opinions
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/services/exemption-certificate" className="text-xs text-stone-500 hover:text-stone-900 transition-colors">
-                        Planning
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/services/land-registry-map-house" className="text-xs text-stone-500 hover:text-stone-900 transition-colors">
-                        Maps &amp; Declarations
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 mb-3">
-                    Contact
-                  </p>
-                  <ul className="space-y-2">
-                    <li>
-                      <a href="tel:0834516091" className="text-xs text-stone-500 hover:text-stone-900 transition-colors">
-                        083 451 6091
-                      </a>
-                    </li>
-                    <li>
-                      <a href="mailto:emergearchservices@protonmail.com" className="text-xs text-stone-500 hover:text-stone-900 transition-colors">
-                        emergearchservices@protonmail.com
-                      </a>
-                    </li>
-                    <li className="text-xs text-stone-400">Dublin, Ireland</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom bar */}
-            <div className="border-t border-stone-100 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-              <p className="text-xs text-stone-400">
-                James Lawler MRIAI · RIAI Registered Practice Member 2026
-              </p>
-              <p className="text-xs text-stone-400">
-                © {new Date().getFullYear()} EMERGE Legal
-              </p>
-            </div>
+            <p className="text-xs text-stone-500">
+              James Lawler &middot; RIAI Registered Member &middot; 2026
+            </p>
           </div>
         </footer>
 

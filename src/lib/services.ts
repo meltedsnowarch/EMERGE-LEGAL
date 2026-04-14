@@ -42,7 +42,7 @@ export const SERVICES: Service[] = [
     turnaround: "2–3 working days",
     category: "maps-declarations",
     description:
-      "Apartment properties require both a Land Registry Compliant Map and a certified floor plan showing the boundaries and area of the individual unit. James Lawler MRIAI architect will carry out a site survey where required and produce all necessary documentation to satisfy the Property Registration Authority of Ireland requirements.",
+      "Apartment properties require both a Land Registry Compliant Map and a certified floor plan showing the boundaries and area of the individual unit. James Lawler Architect will carry out a site survey where required and produce all necessary documentation to satisfy the Property Registration Authority of Ireland requirements.",
   },
   {
     slug: "declaration-of-identity",
@@ -62,7 +62,7 @@ export const SERVICES: Service[] = [
     turnaround: "",
     category: "compliance-opinions",
     description:
-      "When selling or mortgaging a property, confirmation may be required that any works carried out comply with planning permission. The Opinion of Compliance with Planning is prepared by James Lawler MRIAI following a visual inspection of the property. It is issued in RIAI standard format and is accepted by all major banks and mortgage providers.",
+      "When selling or mortgaging a property, confirmation may be required that any works carried out comply with planning permission. The Opinion of Compliance with Planning is prepared by James Lawler Architect following a visual inspection of the property. It is issued in RIAI standard format and is accepted by all major banks and mortgage providers.",
   },
   {
     slug: "opinion-compliance-building-regulations",

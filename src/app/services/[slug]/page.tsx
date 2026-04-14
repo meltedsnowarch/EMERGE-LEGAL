@@ -44,7 +44,7 @@ export default async function ServicePage({
       <div className="max-w-5xl mx-auto">
 
         {/* ── Breadcrumb ─────────────────────────────────────────────── */}
-        <div className="mb-12 animate-fade-up">
+        <div className="mb-6 animate-fade-up">
           <Link
             href="/#services"
             className="text-xs font-semibold uppercase tracking-widest text-stone-400 hover:text-stone-900 transition-colors"
@@ -53,38 +53,35 @@ export default async function ServicePage({
           </Link>
         </div>
 
+        {/* ── Title (outside grid so sidebar aligns with description) ── */}
+        <div className="mb-8 animate-fade-up">
+          <h1 className="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight leading-tight">
+            {service.title}
+          </h1>
+        </div>
+
         {/* ── Content grid ───────────────────────────────────────────── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
 
           {/* Left — description (2/3 width) */}
           <div className="md:col-span-2 animate-fade-up">
-            <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 mb-4">
-              {categoryLabel}
-            </p>
-            <h1 className="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight leading-tight mb-8">
-              {service.title}
-            </h1>
             <p className="text-sm text-stone-600 leading-[1.8]">
               {service.description}
             </p>
-
-            <div className="mt-10 pt-8 border-t border-stone-100">
-              <Link
-                href="/contact"
-                className="text-sm font-semibold text-stone-900 hover:text-stone-600 transition-colors"
-              >
-                Contact me to enquire
-              </Link>
-            </div>
           </div>
 
-          {/* Right — sidebar (1/3 width) */}
+          {/* Right — sidebar (1/3 width, flush with description) */}
           <div className="animate-fade-up-delay-1">
-            <div className="border border-stone-100 p-6 space-y-6">
+            <div className="border border-stone-200 p-6 space-y-6"
+              style={{ background: "#FAF8F3" }}>
               <p className="text-sm text-stone-700 leading-relaxed">
-                Prepared by James Lawler, RIAI Registered Architect, Dublin, Ireland.
+                Prepared by James Lawler, MRIAI, Dublin, Ireland
               </p>
-              <Link href="/contact" className="btn-primary block text-center">
+              <Link
+                href="/contact"
+                className="block text-center text-sm font-semibold uppercase tracking-widest py-3 px-4 border border-stone-300 text-stone-800 transition-colors hover:border-stone-600"
+                style={{ background: "#FAF8F3" }}
+              >
                 Book Now
               </Link>
             </div>
@@ -92,7 +89,7 @@ export default async function ServicePage({
 
         </div>
 
-        {/* ── Related / back ─────────────────────────────────────────── */}
+        {/* ── Back ───────────────────────────────────────────────────── */}
         <div className="mt-16 pt-10 border-t border-stone-100 animate-fade-up-delay-2">
           <Link
             href="/#services"

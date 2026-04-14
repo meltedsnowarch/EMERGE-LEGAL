@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   CATEGORY_ORDER,
   CATEGORY_LABELS,
@@ -13,11 +14,11 @@ const DELAY = [
   "animate-fade-up-delay-4",
 ] as const;
 
-/* Colour band for each column header */
+/* All column headers use the Compliance Opinions colour */
 const COLUMN_BG: Record<ServiceCategory, string> = {
-  "maps-declarations":  "#F4EFE4",
+  "maps-declarations":   "#F7F3EB",
   "compliance-opinions": "#F7F3EB",
-  planning:             "#FAF8F3",
+  planning:              "#F7F3EB",
 };
 
 const HOW_IT_WORKS = [
@@ -49,19 +50,33 @@ export default function HomePage() {
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section
         data-design-id="hero"
-        className="px-6 pt-8 pb-8 sm:pt-10 sm:pb-10"
+        className="px-6 pt-6 pb-6 sm:pt-8 sm:pb-8"
       >
         <div className="max-w-5xl mx-auto">
-          <div className="max-w-2xl animate-fade-up">
-            <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 mb-5">
-              RIAI Registered Architect &middot; Dublin &middot; Ireland
-            </p>
-            <h1 className="text-2xl sm:text-[1.8rem] md:text-[2.2rem] font-bold text-stone-900 tracking-tight leading-tight">
-              Architectural compliance documents for property transactions in Ireland.
-            </h1>
-            <p className="mt-4 text-sm text-stone-500 font-light leading-relaxed max-w-xl">
-              Land Registry maps, Opinions on Compliance, and Declarations of Identity for solicitors and estate agents — with a 48-hour turnaround on most services.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+
+            {/* Text — spans 2 of 3 columns */}
+            <div className="md:col-span-2 animate-fade-up">
+              <h1 className="text-2xl sm:text-[1.8rem] md:text-[2.2rem] font-bold text-stone-900 tracking-tight leading-tight">
+                Architectural compliance documents for property transactions in Ireland.
+              </h1>
+              <p className="mt-4 text-sm text-stone-500 font-light leading-relaxed">
+                Land Registry maps, Opinions on Compliance, and Declarations of Identity for solicitors and estate agents — with a 48-hour turnaround on most services.
+              </p>
+            </div>
+
+            {/* Image — 1 column, same width as card 3 */}
+            <div className="animate-fade-up-delay-1 hidden md:block">
+              <Image
+                src="/how1.jpg"
+                alt="Residential property"
+                width={0}
+                height={0}
+                sizes="(max-width: 768px) 100vw, 33vw"
+                style={{ width: "100%", height: "auto" }}
+              />
+            </div>
+
           </div>
         </div>
       </section>
@@ -120,7 +135,8 @@ export default function HomePage() {
       <section
         data-design-id="how-it-works"
         id="how-it-works"
-        className="border-b border-stone-100 bg-stone-50 px-6 py-16 sm:py-20"
+        className="border-b border-stone-100 px-6 py-16 sm:py-20"
+        style={{ background: "#FAF8F3" }}
       >
         <div className="max-w-5xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 mb-10 animate-fade-up">
@@ -148,7 +164,7 @@ export default function HomePage() {
       {/* ── DIVIDER ───────────────────────────────────────────────────── */}
       <section data-design-id="divider" className="px-6 py-10">
         <div className="max-w-5xl mx-auto">
-          <div className="w-full h-px" style={{ background: "#e7e0d0" }} />
+          <div className="w-1/3 h-px" style={{ background: "#e7e0d0" }} />
         </div>
       </section>
     </>
